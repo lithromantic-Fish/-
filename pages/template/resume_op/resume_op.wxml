@@ -1,0 +1,95 @@
+<!--pages/template/resume_op/resume_op.wxml-->
+<view class="container" wx:if="{{PAGE}}">
+
+<view class='re-op-form ' >
+  <view class='form-overly'>
+
+    <view class='form-layout'>
+      <!-- <view class="tit">请修改招聘进程</view> -->
+      <view class='item-wrap'>
+
+        <view 
+          wx:for="{{permission}}"
+          wx:key="{{index}}"
+          wx:for-index="i"
+          class="items {{items.root == 0?'dpn':'1'}}" >
+          <view 
+            class='items-tt tt{{item.id}} {{selectedFlag[i] == true ? "on" : ""}} clearfix' 
+            data-index='{{i}}' 
+            catchtap='showTabs'>{{item.name}} <view class='icon'></view> </view>
+          <view class='items-ct'>
+            <view class='items-ct-layout'>
+              <view 
+                class="radio-group clearfix">
+                <view 
+                  class="radio {{items1.root == 0?'dpn':''}}" 
+                  wx:for="{{item.children}}" 
+                  wx:for-item="items1" 
+                  wx:key="{{idx}}"
+                  data-index="{{index}}" 
+                  data-id="{{items1.id}}" 
+                  data-name="{{items1.name}}" 
+                  data-type="{{items1.type}}" 
+                  data-root="{{items1.root}}" 
+                  catchtap='formRadioChange'>
+                  <form 
+                  bindsubmit="switchFormSubmit" 
+                  report-submit="true" >
+                    <button 
+                    form-type="submit" 
+                    type="default" 
+                    size="mini" 
+                    class="text {{items1.checked==true?'is_checked':''}} {{items1.root == 0?'root':''}}">{{items1.name}}</button>
+                  </form>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="section" wx:if='{{out_reason.length >0}}'>
+          <!-- <view class="section__title">普通选择器</view> -->
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{out_reason}}">
+            <view class="picker default" wx:if="{{!out_reason_value}}">
+              选择{{out_reason_name}}原因
+            </view>
+            <view class="picker" wx:else>
+              {{out_reason_value}}
+            </view>
+          </picker>
+        </view>
+        <view class='items text-area'>
+          <textarea 
+            fixed="true"
+            placeholder-class="phcolor"
+            value='{{permission_text}}'
+            bindinput="textareaChange" 
+            placeholder="请输入备注/评价" />
+        </view>
+
+        <view class='items'>          
+          <view class='re-op-check'>
+            <checkbox-group 
+              bindchange="_checkboxChange">
+              <label class='label'>
+                <checkbox value="1" checked="true" />
+                <text>接收该简历协作消息提醒</text>
+              </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <form 
+          class='items submit-btn' 
+          bindtap="switchFormSubmit" 
+          report-submit='true'>
+          <button 
+            form-type="submit" 
+            type="default" 
+            size="mini" 
+            bindtap="submitForm">确定</button>
+        </form>
+      </view>
+    </view>
+    <!-- <view class='form-close-btn' bindtap='showHiddenForm'></view> -->
+  </view>
+</view>
+</view>

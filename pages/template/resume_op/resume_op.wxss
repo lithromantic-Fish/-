@@ -1,0 +1,270 @@
+/* pages/template/resume_op/resume_op.wxss */
+
+
+/*修改招聘进程表单*/
+
+.container {
+  min-height: 100%;
+  background-color: #fff;
+}
+
+.re-op-form .form-overly { 
+  min-height: 100%;
+}
+
+.re-op-form .form-layout {
+  padding: 20rpx 50rpx 0;
+}
+
+/* .re-op-form .form-close-btn {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  right: 50rpx;
+  top: 40rpx;
+  z-index: 13;
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_009.png') no-repeat 0 0;
+  background-size: 100% 100%;
+} */
+
+.re-op-form .tit {
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.re-op-form .item-wrap {
+  padding-top: 20rpx;
+}
+
+.re-op-form  .items {
+  margin-top: 10rpx;
+  display: block;
+}
+
+.re-op-form .items .items-tt {
+  height: 28rpx;
+  line-height: 28rpx;
+  padding-left: 38rpx;
+  font-size: 26rpx;
+  color: #9aa1aa;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  /* background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_022.png') no-repeat right center / 20rpx 11rpx; */
+}
+
+.re-op-form .items .items-tt.on {
+  color: #3074f2;
+}
+
+.re-op-form .items .items-tt.tt1 {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_010.png') no-repeat 0 center / 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt1.on {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_010_h.png') no-repeat 0 center / 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt2 {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_011.png') no-repeat 0 center;
+  background-size: 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt2.on {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_011_h.png') no-repeat 0 center / 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt3 {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_012.png') no-repeat 0 center;
+  background-size: 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt3.on {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_012_h.png') no-repeat 0 center/ 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt4 {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_013.png') no-repeat 0 center;
+  background-size: 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt4.on {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_013_h.png') no-repeat 0 center / 28rpx 28rpx;
+}
+
+.re-op-form .items .items-tt.tt24 {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_021.png') no-repeat 0 center / 27rpx 22rpx;
+}
+
+.re-op-form .items .items-tt.tt24.on {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_021_h.png') no-repeat 0 center / 27rpx 22rpx;
+}
+
+.re-op-form .items .items-tt .icon {
+  float: right;
+  margin: 8rpx 2% 0 0;
+  width: 20rpx;
+  height: 11rpx;
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_022.png') no-repeat right center / 20rpx 11rpx;
+}
+.re-op-form .items .items-tt.on .icon {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_023.png') no-repeat right center / 20rpx 11rpx;
+}
+
+
+.re-op-form .items .items-tt.on + .items-ct {
+  display: block;
+}
+
+.items-ct {
+  display: none;
+}
+
+/* .re-op-form .items-ct-layout {
+  width: 108%; *//* background-color: #333333;
+} */
+
+.radio-group {
+  /* column-count: 3;
+  flex-wrap: wrap;
+  align-items: flex-start; */
+  width: 108%;
+}
+
+.radio {
+  /* display: flex; */
+  float: left;
+  width: 188rpx;
+  display: block;
+  margin: 0 44rpx 20rpx 0; 
+}
+
+.radio .text {
+  display: block;
+  width: 188rpx !important;
+  height: 58rpx !important;
+  line-height: 58rpx !important;
+  color: #666 !important;
+  font-size: 26rpx !important;
+  border: 1rpx solid #ccc;
+  background-color: #fff !important;
+  border-radius: 10rpx !important;
+  text-align: center;
+}
+
+.radio .text::after {
+  border: none;
+}
+
+.radio .is_checked {
+  background-color: #4c89fb !important;
+  border-color: #4c89fb !important;
+  color: #fff !important;
+}
+
+.radio .root {
+  background-color: #e8e8e8 !important;
+}
+
+.radio .is_checked.root {
+  color: #666 !important;
+  border: 1rpx solid #ccc !important;
+  background-color: #e8e8e8 !important;
+}
+
+/* textarea */
+
+.text-area {
+  border: 1rpx solid #ccc;
+  margin-top: 30rpx;
+}
+
+.text-area textarea {
+  display: block;
+  width: 100%;
+  height: 160rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+}
+
+.submit-btn button {
+  display: block;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #4c89fb;
+  font-size: 34rpx;
+  color: #fff;
+}
+
+.submit-btn button:active {
+  background-color: #3074f2;
+  color: #fff;
+}
+
+/* 未选中的 背景样式 */
+
+label checkbox {
+  float: left;
+}
+
+label checkbox .wx-checkbox-input {
+  width: 24rpx !important;
+  height: 24rpx !important;
+}
+
+/* 选中后的 对勾样式 */
+label checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 24rpx !important; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 24rpx !important; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 24rpx;
+  text-align: center;
+  font-size: 24rpx; /* 对勾大小 */
+  color: #4c89fb; /* 对勾颜色  */
+}
+
+label.label text {
+  line-height: 1.36;
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* global wxss */
+
+.phcolor{
+    color: #cccccc;
+}
+
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.clearfix::before {
+  content: " ";
+  display: table;
+}
+
+.section {
+  font-size: 26rpx;
+  /* margin-top:10rpx; */
+}
+
+.section .picker {
+	height: 76rpx;
+	line-height: 76rpx;
+	background: #fff url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_018.png') no-repeat 96% center / 12rpx 6rpx;
+	border-radius: 10rpx;
+	border: solid 1px #cccccc;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  color: #666;
+}
+.section .picker.default {
+  color: #999;
+}
+
+.dpn {
+  display: none
+}

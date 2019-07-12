@@ -1,0 +1,96 @@
+<!-- 多份简历 -->
+<view class="container" wx:if="{{PAGE}}">
+  <!-- 如果是分享者显示分享控件 -->
+  <!-- <view class="top-share" wx:if="{{sharer.isHR === 1}}">
+    <text class="top-share-text">如下是你准备转发的简历</text>
+    <button open-type="share" class="top-share-btn">立即转发</button>
+  </view> -->
+  
+  <!-- 转发者 配置的公司信息 -->
+  <view class="company-info" wx:if="{{pageData.use_logo_coname == 1 && pageData.logo_url && pageData.company_name}}">
+    <image src='{{pageData.logo_url}}'></image>
+    <text>{{pageData.company_name}}</text>
+  </view>
+
+  <!-- 转发留言 -->
+  <view class="share-message" wx:if="{{sharer.msg != ''}}">
+    <view class="auth-info">
+      <image src="{{sharer.avatar}}"></image>
+      <text>{{sharer.nickname}}的转发留言</text>
+    </view>
+    <view class="share-msg">
+      <text>{{sharer.msg}}</text>
+    </view>
+  </view>
+
+    <!-- 简历中个人信息 -->
+  <view 
+    wx:for="{{dataItem}}" 
+    wx:key="{{index}}" 
+    class="resume-part re-p-info {{item.isRead?'isread':''}}">
+    <view 
+      data-code="{{item.id}}" 
+      data-share_code="{{share_code}}" 
+      data-share_id="{{share_id}}" 
+      data-rid="{{item.rid}}" 
+      data-id="{{index}}" 
+      data-page_source="2" 
+      bindtap="_showJL" 
+      class="resume-overly" >
+      <view class="line-layout clearfix">
+        <view class="_inline">
+          <text wx:if="{{item.name}}" class="_inline _bl name">{{item.name}}</text>
+        </view>
+        <view class="_inline position-inline clearfix">
+          <text wx:if="{{item.procedure_title}}" class="_inline position-text">应聘职位</text>
+          <text wx:if="{{item.procedure_title}}" class="_inline position">{{item.procedure_title}}</text>
+        </view>
+      </view>
+
+      <view class="line-layout clearfix">
+        <view class="detail-info clearfix">
+          <text wx:if="{{item.sex_text}}" class="_inline _bl sex">{{item.sex_text}}</text>
+          <text wx:if="{{item.age}}" class="_inline _bl age">{{item.age}}岁</text>
+          <text wx:if="{{item.city_text}}" class="_inline _bl address">{{item.city_text}}</text>
+          <text wx:if="{{item.education}}" class="_inline _bl education">{{item.education}}</text>
+          <text wx:if="{{item.job_year}}" class="_inline workinglife">{{item.job_year}}年工作经验</text>
+        </view>
+      </view>
+
+      <view class="line-layout clearfix">
+        <view class="work clearfix">
+          <view class="work-left clearfix">
+            <view class="work-icon">最近</view>
+            <view wx:if="{{item.last_title}}" class="work-position _bl">{{item.last_title}}</view>          
+          </view>
+          <view wx:if="{{item.last_company}}" class="work-company"><text>{{item.last_company}}</text></view>
+        </view>
+      </view>
+
+      <view class="line-layout clearfix">
+        <view class="status clearfix">
+          <view class="zp-status">
+            <view class='text align-center-vertical'>当前招聘进程：<text>{{item.status_text}}</text></view>
+          </view>
+          <view 
+            data-index="{{index}}" 
+            data-share_id="{{share_id}}" 
+            data-share_code="{{share_code}}"
+            data-rid="{{item.rid}}" 
+            data-uid="{{item.uid}}" 
+            data-gid="{{item.gid}}" 
+            data-is_send="{{item.permission}}" 
+            data-page_source="2" 
+            catchtap="_changeJC" 
+            class="btn {{item.permission == 0 ? 'nosend' : ''}}">评价/修改进程</view>
+        </view>
+      </view>
+
+      <view class="surname sex{{item.sex}}">{{item.first_name}}</view>
+      <view class="icon-ischeck"></view>
+
+    </view>
+  </view>
+
+
+</view>

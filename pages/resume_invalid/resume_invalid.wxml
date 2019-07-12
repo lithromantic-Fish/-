@@ -1,0 +1,18 @@
+<!--pages/resume_invalid/resume_invalid.wxml-->
+<view class='container'>
+
+  <view class='tip-wrap'>
+    <!-- 取消分享 -->
+  <view class='tt' wx:if="{{invalidType == 1}}">
+  <text>对方已取消分享！</text>
+  </view>
+  <!-- 分享已经过期 -->
+  <view class="tt" wx:elif="{{invalidType == 2}}">
+  <text>分享链接已过期！</text>
+  </view>
+  <view class='intro'>
+    <text>如需继续访问请联系 {{sharer_nickname}} 重新分享</text>
+  </view>
+  </view>
+
+</view>

@@ -1,0 +1,205 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{PAGE}}">
+
+  <!-- 如果是分享者显示分享控件 -->
+  <!-- <view class="top-share" wx:if="{{sharer.isHR == 1 && share_type == 2}}">
+    <text class="top-share-text">如下是你准备转发的简历</text>
+    <button open-type="share" class="top-share-btn">立即转发</button>
+  </view> -->
+
+  <!-- 转发者 配置的公司信息 -->
+  <view class="company-info" wx:if="{{pageData.use_logo_coname == 1 && pageData.logo_url && pageData.company_name}}">
+    <image src='{{pageData.logo_url}}'></image>
+    <text>{{pageData.company_name}}</text>
+  </view>
+
+  <!-- 简历分享 tab -->
+  <view class="resume_nav" hidden='hidden'>
+    <view class="nav-item {{navTabIndex == 1?'on':''}}" data-index="1" data-name="resume" catchtap="navTabClick">标准简历</view>
+    <view wx:if="{{source_file}}" class="nav-item" data-index="2" data-name="original" catchtap="navTabClick">原始简历</view>
+    <view class="nav-item {{navTabIndex == 3?'on':''}}" data-index="3" data-name="record" catchtap="navTabClick">操作记录(
+      <view class="nav-num">{{operate.count}}</view>)</view>
+  </view>
+
+  <!-- 标准简历tab -->
+  <view class="resume" wx:if="{{navTabIndex == 1}}">
+    <view class="nav-tip" hidden="{{!isShowTip}}">
+      <text>如标准简历内容不完整，可查看原始简历</text>
+      <view class="close" bindtap="_closeTip"></view>
+    </view>
+    <!-- 转发留言 -->
+    <view class="share-message" wx:if="{{sharer.msg !== ''}}">
+      <view class="auth-info">
+        <image src="{{sharer.avatar}}"></image>
+        <text>{{sharer.nickname}}的转发留言</text>
+      </view>
+      <view class="share-msg">
+        <text>{{sharer.msg}}</text>
+      </view>
+    </view>
+    <!-- 简历信息 -->
+    <view class="resume-part re-p-info">
+      <view class="resume-overly">
+
+        <view class="line-layout clearfix">
+          <view class="_inline">
+            <text class="_inline _bl name">{{resume.name}}</text>
+          </view>
+          <view class="_inline position-inline clearfix">
+            <text class="_inline position-text">应聘职位</text>
+            <text class="_inline position">{{resume.procedure_title}}</text>
+          </view>
+        </view>
+
+        <view class="line-layout clearfix">
+          <view class="detail-info clearfix">
+            <text class="_inline _bl sex">{{resume.sex_text}}</text>
+            <text class="_inline _bl age">{{resume.age}}岁</text>
+            <text class="_inline _bl address">{{resume.city_text}}</text>
+            <text class="_inline _bl education">{{resume.education_text}}</text>
+            <text class="_inline workinglife">{{resume.job_year}}年工作经验</text>
+          </view>
+        </view>
+
+        <view class="line-layout contacts">
+          <view wx:if="{{resume.mobile}}" class="contacts-item mobile" catchtap="actionSheetTap">{{resume.mobile}}</view>
+          <view wx:if="{{resume.email}}" class="contacts-item mail" selectable="true" catchtap="mailCopyTap">{{resume.email}}</view>
+          <view wx:if="{{resume.job_state_text}}" class="contacts-item status">{{resume.job_state_text}}</view>
+        </view>
+
+        <view class="surname sex{{resume.sex}}">{{resume.first_name}}</view>
+
+      </view>
+    </view>
+    <view class="resume-part re-work" wx:if="{{resume.work_list[0] || resume.edu_list[0]}}">
+      <view class="w-overly" style='height: {{experience.height}}'>
+        <!-- 最近工作经历 -->
+        <view class="w-item" wx:if="{{resume.work_list[0]}}">
+          <view class="w-i-tt">最近工作经历</view>
+          <view class="w-i-ct">
+            <view class="w-date">{{resume.work_list[0].start_time}} - {{resume.work_list[0].end_time}}</view>
+            <view class="project-xg clearfix">
+              <view class="p-xg-tt p-xg-job _bl">{{resume.work_list[0].job_title}}</view>
+              <view class="p-xg-tt p-xg-name">
+                <text>{{resume.work_list[0].company}}</text>
+              </view>
+            </view>
+            <view class="project-xg clearfix">
+              <text class="project-intro" wx:if="{{resume.work_list[0].desc}}">{{resume.work_list[0].desc}}</text>
+            </view>
+          </view>
+          <view class='w-bg' wx:if="{{!experience.isShow}}">
+            <view class='w-jt' bindtap='_experience'></view>
+          </view>
+        </view>
+        <!-- 教育经历  -->
+        <view class="w-item" wx:if="{{resume.edu_list[0]}}">
+          <view class="w-i-tt">教育经历</view>
+          <view class="w-i-ct">
+            <view class="w-date" wx:if="{{resume.edu_list[0].start_time}}">{{resume.edu_list[0].start_time}} - {{resume.edu_list[0].end_time}}</view>
+            <view class="project-xg clearfix" wx:if="{{resume.edu_list[0].school_name}}">
+              <view class="p-xg-tt p-xg-job ">{{resume.edu_list[0].school_name}}</view>
+            </view>
+            <view class="detail-info clearfix">
+              <text class="_inline {{resume.edu_list[0].specialty?'_bl':''}}" wx:if="{{resume.edu_list[0].education_text}}">{{resume.edu_list[0].education_text}}</text>
+              <text class="_inline age" wx:if="{{resume.edu_list[0].specialty}}">{{resume.edu_list[0].specialty}}</text>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='resume-part'>
+      <view class='zp-info'>
+        <view class='zp-item'>应聘职位：
+          <text>{{resume.procedure_title}}</text>
+        </view>
+        <view class='zp-item'>当前招聘进程：
+          <text>{{resume.status_text}}</text>
+        </view>
+        <view wx:if="{{source_file}}" class="source-file" catchtap="showSourceFile">
+          <text>查看{{resume.name}}的简历 ></text>
+        </view>
+      </view>
+    </view>
+
+    <view class='resume-part'>
+      <view class="record-list-layout">
+        <view class="tit">操作记录</view>
+        <view class="record-item {{operate.count == index+1 ? 'none': ''}}" wx:for="{{operate.data}}" wx:key="{{index}}">
+
+          <view class="view-line clearfix">
+            <text class="date">{{item.dateline}}</text>
+            <view class="op-p clearfix">
+              <text>{{item.name}}</text>
+              <image src="{{item.avatar}}"></image>
+            </view>
+          </view>
+
+          <view class="view-line title clearfix">
+            <text>{{item.action}}</text>
+          </view>
+          <view class="view-line desc clearfix" hidden="true">
+            <text>设置招聘进程为“面试通过”并备注/评价</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <!-- 多份简历功能按钮 -->
+    <view class="fn-btn-area" wx:if="{{share_type == 3}}">
+      <view class="btns">
+        <button catchtap='_backToList'>返回列表</button>
+        <button catchtap='_showNext'>下一份</button>
+      </view>
+    </view>
+  </view>
+  <!-- 操作记录tab -->
+  <!-- <view wx:else="{{navTabIndex == 2}}">
+    <view class="record-list-layout">
+      <view class="record-item" wx:for="{{operate.data}}" wx:key="{{index}}">
+
+        <view class="view-line clearfix">
+          <text class="date">{{item.dateline}}</text>
+          <view class="op-p clearfix">
+            <text>{{item.name}}</text>
+            <image src="{{item.avatar}}"></image>
+          </view>
+        </view>
+
+        <view class="view-line title clearfix">
+          <text>{{item.action}}</text>
+        </view>
+        <view class="view-line desc clearfix" hidden="true">
+          <text>设置招聘进程为“面试通过”并备注/评价</text>
+        </view>
+
+      </view>
+
+    </view>
+  </view> -->
+
+
+  <!-- 吸附在底部的 评价/修改进程 组件模版 -->
+  <view class='resume-op' wx:if="{{permission != 2}}">
+    <view class='re-op-overly'>
+      <form bindtap="switchFormSubmit" report-submit='true'>
+        <button data-share_id="{{share_id}}" data-share_code="{{share_code}}" data-uid="{{resume.uid}}" data-rid="{{resume.id}}" data-gid="{{resume.gid}}" data-is_send="{{permission}}" form-type="submit" type="default" size="mini" class="re-op-btn {{permission == 0 ? 'nosend' : ''}}"
+          bindtap="_changeJC">评价/修改进程</button>
+      </form>
+    </view>
+  </view>
+
+  <!--默认action-sheet为隐藏，由button触发-->
+  <action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
+    <block wx:for="{{actionSheetItems}}" wx:key="{{index}}">
+      <action-sheet-item wx:if="{{index == 0}}" class="phone">{{resume.mobile}}</action-sheet-item>
+      <action-sheet-item wx:else data-index="{{index}}" bindtap="bindItemTap">{{item}}</action-sheet-item>
+    </block>
+    <!--自动隐藏action-sheet-->
+    <action-sheet-cancel>取消</action-sheet-cancel>
+  </action-sheet>
+
+</view>

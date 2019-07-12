@@ -1,0 +1,330 @@
+<view class="main" wx:if="{{PAGE}}">
+
+  <!-- 有分享/协作记录数据 -->
+  <view 
+    class="have-data" 
+    wx:if="{{INIT_COUNT > 0}}">
+
+    <!-- 顶部搜索 start -->
+    <view 
+      catchtouchmove='true' 
+      class="search">
+      <view 
+        class="search-tit" 
+        data-status="{{SEARCHAREA.positionStatus}}"
+        bindtap="_changePosition">
+          <view 
+            wx:for="{{SEARCHAREA.position}}" 
+            wx:key="{{index}}"
+            data-key="{{item.key}}" 
+            data-name="{{item.name}}">
+              <text>{{item.checked ? item.name : ''}}</text>
+          </view>
+        </view>
+      <view class="search-ipt">
+        <view class="search-default" catchtap="_showInput">
+          <text>姓名搜索</text>
+        </view>
+        <view 
+          class="search-in"
+          hidden="{{!aboutSearch.isShowInput}}">
+          <input 
+            type="text" 
+            focus="{{aboutSearch.isShowInput}}" 
+            auto-focus="{{aboutSearch.isShowInput}}" 
+            bindblur="_bindInputBlur" 
+            bindinput="_getInputValue" 
+            value="{{aboutSearch.inputValue}}" />
+          <view 
+            class="icon-clear" 
+            wx:if="{{aboutSearch.inputValue.length > 0}}" 
+            catchtap="_clearInput"></view>
+        </view>
+      </view>
+    </view>
+    <!-- 顶部搜索 end -->
+    <!-- 筛选 filter start -->    
+    <view class="filter">
+      <view 
+        class="{{isHR == 1 ?'is-hr':'not-hr'}}">
+        <view class='dateline clearfix'>
+          <view
+            wx:if="{{isHR != 1}}" 
+            class="checkbox-group " >
+            <view 
+              data-value="{{filter.is_operate}}"
+              bindtap="_checkMine"
+              class="label {{filter.is_operate == 1 ?'checked':''}} clearfix">              
+              <text>只看我操作过的简历</text>
+            </view>
+          </view>
+          <view 
+            bindtap="_changeOrder"
+            class="dateline-sort {{filter.order!= 0?'selected':''}} ">
+            <text>{{SEARCHAREA.selectedOrderName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 筛选 filter start -->   
+
+    <!-- 搜索展示相关区域 -->
+    <view 
+      class="search-area" 
+      wx:if='{{POPUP.BG}}'>
+      
+      <view
+        catchtouchmove='true'
+        class="search-area-bg" 
+        catchtap='_closePosiiton'></view>
+      <!-- 职位列表 -->
+      <view 
+        class="job-list" 
+        wx:if='{{POPUP.joblistArea}}'>
+        <view 
+          class="items job-items">
+          <view 
+            wx:for="{{SEARCHAREA.position}}" 
+            wx:key="{{index}}"
+            class="item {{item.checked?'selected':''}}" 
+            data-index="{{index}}" 
+            data-k="{{item.key}}" 
+            data-name="{{item.name}}" 
+            bindtap="_selectPosition">
+              <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 搜索结果 -->
+      <view 
+        class="search-result" 
+        wx:if="{{POPUP.resultArea}}">
+        <view wx:if="{{SEARCHAREA.COUNT > 0}}">
+          <view class="result-num">共找到<text>{{SEARCHAREA.COUNT}}</text>条相关结果</view>   
+          <view class="result-list">
+            <view 
+              class="result-item clearfix" 
+              wx:for="{{SEARCHAREA.REASULT}}" 
+              wx:key="{{index}}" 
+              data-code="{{item.id}}" 
+              data-id="{{index}}" 
+              data-index="{{index}}" 
+              data-share_code="{{item.share_code}}" 
+              data-share_id="{{item.share_id}}" 
+              data-uid="{{item.uid}}"  
+              data-rid="{{item.rid}}" 
+              data-page_source="1"  
+              bindtap="_showJL" >
+              <text 
+                class="name _inline _bl" 
+                wx:if="{{item.name}}" 
+                >{{item.name}}</text>
+              <text 
+                class="text _inline _bl"
+                wx:if="{{item.sex_text}}" >{{item.sex_text}}</text>
+              <text 
+                class="text _inline _bl"
+                wx:if="{{item.age}}">{{item.age}}岁</text>
+              <text 
+                class="text _inline _bl"
+                wx:if="{{item.city}}">{{item.city}}</text>
+              <text 
+                class="text _inline _bl"
+                wx:if="{{item.education}}">{{item.education}}</text>
+              <text 
+                class="text _inline "
+                wx:if="{{item.job_year}}">{{item.job_year}}年工作经验</text>
+            </view>
+          </view>
+          <view 
+            class="check-all" 
+            wx:if="{{SEARCHAREA.COUNT > 5}}"
+            bindtap='_checkAll'>
+              <text>查看所有搜索结果</text>
+          </view> 
+        </view>
+
+        <view
+          wx:else
+          class="result-none">
+          <text>暂无搜索结果</text>
+        </view>
+
+      </view>
+
+      <!-- 时间排序 -->
+      <view 
+        class='filter dataline-filter' 
+        wx:if="{{POPUP.datelineArea}}">
+        <view 
+          class="{{isHR == 1 ?'is-hr':'not-hr'}}">
+          <view class='dateline clearfix'>
+            <view
+              wx:if="{{isHR != 1}}" 
+              class="checkbox-group " >
+              <view 
+                data-value="{{filter.is_operate}}"
+                bindtap="_checkMine"
+                class="label {{filter.is_operate == 1 ?'checked':''}} clearfix">              
+                <text>只看我操作过的简历</text>
+              </view>
+            </view>
+            <view 
+            bindtap="_changeOrder"
+            class="dateline-sort {{filter.order!= 0?'selected':''}} ">
+              <text>{{SEARCHAREA.selectedOrderName}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="job-list order-list {{isHR == 1 ?'is-hr':'not-hr'}}">
+          <view 
+            class="items">
+            <view 
+              wx:for="{{SEARCHAREA.dateline}}" 
+              wx:key="{{index}}"
+              class="item {{item.checked?'selected':''}}" 
+              data-index="{{index}}" 
+              data-name="{{item.name}}" 
+              data-value="{{item.value}}" 
+              bindtap="_selectDateline">
+                <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+
+    <!-- 数据列表 start -->
+    <view class="data-layout">
+      <!-- pageData为空, 就是 选择相关筛选条件时为空 -->
+      <view wx:if="{{pageData.length > 0}}" >
+      <view 
+        wx:for="{{pageData}}" 
+        wx:key="{{index}}" 
+        class="resume-part re-p-info {{item.isRead?'isread':''}}">
+        <view 
+          data-code="{{item.id}}" 
+          data-index="{{index}}" 
+          data-share_code="{{item.share_code}}" 
+          data-share_id="{{item.share_id}}" 
+          data-uid="{{item.uid}}" 
+          data-rid="{{item.rid}}" 
+          data-page_source="1" 
+          bindtap="_showJL" 
+          class="resume-overly" >
+          <view class="line-layout clearfix">
+            <view class="_inline">
+              <text class="_inline _bl name">{{item.name}}</text>
+            </view>
+            <view class="_inline position-inline clearfix">
+              <text class="_inline position-text">应聘职位</text>
+              <text class="_inline position">{{item.job_title}}</text>
+            </view>
+          </view>
+
+          <view class="line-layout clearfix">
+            <view class="detail-info clearfix">
+              <text class="_inline _bl sex">{{item.sex_text}}</text>
+              <text class="_inline _bl age">{{item.age}}岁</text>
+              <text class="_inline _bl address">{{item.city}}</text>
+              <text class="_inline _bl education">{{item.education}}</text>
+              <text class="_inline workinglife">{{item.job_year}}年工作经验</text>
+            </view>
+          </view>
+
+          <view class="line-layout clearfix">
+            <view class="work clearfix">
+              <view class="work-left clearfix">
+                <view class="work-icon">最近</view>
+                <view class="work-position _bl">{{item.last_job_title}}</view>
+              </view>
+              <view class="work-company"><text>{{item.last_company}}</text></view>
+            </view>
+          </view>
+
+          <view class="line-layout clearfix">
+            <view class="status clearfix">
+              <view class="zp-status"><text>最近操作：{{item.action}}</text></view>
+              <view 
+                data-code="{{item.id}}" 
+                data-index="{{index}}" 
+                data-share_code="{{item.share_code}}" 
+                data-page_source="1" 
+                data-share_id="{{item.share_id}}" 
+                data-uid="{{item.uid}}" 
+                data-rid="{{item.rid}}" 
+                data-gid="{{item.gid}}" 
+                data-is_send="{{item.permission}}" 
+                catchtap="_changeJC" 
+                class="btn {{item.permission == 0 ? 'nosend' : ''}}">评价/修改进程</view>
+            </view>
+          </view>
+
+          <view class="surname sex{{item.sex}}">{{item.first_name}}</view>
+          <view class="icon-ischeck"></view>
+        </view>
+      </view>
+      </view>
+
+      <!-- 只看我操作过的简历 为空 -->
+      <view 
+        wx:else 
+        class="search-result">
+        <view class="result-none">
+          <text>暂无相关简历</text>        
+        </view>
+      </view>
+    </view>
+    <!-- 数据列表 end -->
+
+  </view>
+  <!-- 无分享/协作记录数据 -->
+  <view 
+    wx:else
+    class="data-none">
+
+    <view wx:if="{{isHR == 1}}">
+    你还没有转发过简历哦~
+    </view>
+    
+    <view wx:else>
+      <view>你还没有参与协作过任何简历!</view>
+      <view><text>快邀请你的HR朋友使用三茅招聘吧</text></view>
+    </view>
+
+  </view>
+  
+  <!-- 顶部吸附 -->
+  <view 
+    wx:if="{{isShowFixed}}"
+    class="top-fixed">
+    <view class='tf-layout clearfix'>
+      <view 
+        bindtap='_fixedAllPosition'
+        class="item">全部职位</view>
+      <view 
+        bindtap='_fixedOP'
+        data-value="{{filter.is_operate}}"
+        wx:if="{{isHR != 1 && filter.is_operate == 0}}"
+        class="item">
+        已操作
+      </view>
+      <view 
+        bindtap='_fixedOP'
+        data-value="{{filter.is_operate}}"
+        wx:elif="{{isHR != 1 && filter.is_operate == 1}}"
+        class="item">
+        未操作
+      </view>
+      <view 
+        bindtap='_fixedDesc' 
+        class="item">{{SEARCHAREA.selectedOrderName}}</view>
+      <view 
+        bindtap='_fixedSearch'
+        class='item s-btn'></view>
+    </view>
+  </view>
+
+
+</view>

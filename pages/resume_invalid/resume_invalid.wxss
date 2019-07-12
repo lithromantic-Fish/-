@@ -1,0 +1,25 @@
+/* pages/resume_invalid/resume_invalid.wxss */
+.container {
+  min-height: 100%;
+  padding-top: 225rpx;
+  box-sizing: border-box;
+  background-color: #f0f2f5;
+}
+
+.tip-wrap {
+  padding-top: 262rpx;
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_017.png') no-repeat center 0;
+  background-size: 200rpx 200rpx;
+  text-align: center;
+}
+.tip-wrap .tt {
+	font-size: 30rpx;
+  color: #333333;
+  line-height: 1;
+  margin-bottom: 36rpx;
+}
+.tip-wrap .intro {
+	font-size:26rpx;
+  color: #9aa1aa;
+  line-height: 1;
+}

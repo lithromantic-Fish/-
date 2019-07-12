@@ -1,0 +1,24 @@
+<view class="main" wx:if="{{PAGE}}">
+  <view class='extract'>
+    <view class='share-info'>
+      <view class='sharer-info clearfix'>
+        <image src='{{share.avatar}}'></image>
+        <view class='sharer'>
+          <view class='sharer-name'>{{share.name}}</view>
+          <view class='sharer-date'>{{share.dateline}}</view>
+        </view>
+      </view>
+      <view class='share-tit'>转发了
+        <text>{{share.count}}</text> 份简历给你</view>
+    </view>
+    <view class='passport-tip'>
+      <view>密码提示：<text>{{share.reminder}}</text></view>      
+    </view>
+    <view class='passport-ipt'>
+      <input type='text' value='{{share.passport}}' placeholder='请输入密码' bindinput='_bindinput'></input>
+    </view>
+    <view class='passport-submit'>
+      <button bindtap='passwordSubmit'>立即提取</button>
+    </view>
+  </view>
+</view>

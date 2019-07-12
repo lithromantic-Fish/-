@@ -1,0 +1,297 @@
+/* pages/schedule/init/init.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.container {
+}
+
+/* 顶部选择日程 添加日程  */
+
+.top-rc {
+  padding: 18rpx;
+  display: flex;
+  border-bottom: solid 1rpx #e8e8e8;
+}
+
+.tr-item {
+  height: 65rpx;
+}
+
+.tr-item.ti-1 {
+  flex: 4;
+}
+
+.tr-item.ti-2 {
+  flex: 1;
+  text-align: right;
+}
+
+/* 顶部选择日程 */
+
+.tr-item.ti-1 .picker {
+  background: #f0f2f5 url('https://static.hrloo.com/hrloo56/zpminiapp/img/schedule/ic_01.png') no-repeat 95% center / 20rpx 11rpx;
+  border-radius: 10rpx;
+  padding: 0 60rpx 0 20rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 添加日程 */
+
+.tr-item.ti-2 .add-rc {
+  display: inline-block;
+  width: 120rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  background-color: #4c89fb;
+  border-radius: 16rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+/* 日历 */
+
+.calendar-wrap {
+  position: relative;
+}
+
+/* 日历头 星期 */
+
+.week-wrap .week-head {
+  display: flex;
+}
+
+.week-wrap .week-head text {
+  flex: 1;
+  text-align: center;
+  height: 85rpx;
+  line-height: 85rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}
+
+.week-wrap .week {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 50rpx;
+}
+
+.week-wrap .week .one-day {
+  display: flex;
+  width: calc(100% / 7);
+  text-align: center;
+  height: 75rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.week-wrap .week .one-day text {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 8rpx auto 0;
+  text-align: center;
+}
+
+.week-wrap .week .one-day.have {
+  position: relative;
+}
+
+.week-wrap .week .one-day.have::after {
+  position: absolute;
+  content: ' ';
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #4c89fb;
+  border-radius: 8rpx;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.week-wrap .week .one-day.active text {
+  background-color: #4c89fb;
+  opacity: 0.6;
+  border-radius: 50rpx;
+  color: #fff;
+}
+
+/* 日历头 月 */
+
+.month-wrap {
+  position: relative;
+}
+
+.month-wrap .select-month {
+  /* height: 100rpx;
+  line-height: 100rpx; */
+}
+
+/* .calendar-wrap .date.week {
+  padding-bottom: 50rpx;
+}
+
+.calendar-wrap .date.week .one-day {
+  display: flex;
+  width: calc(100% / 7);
+  text-align: center;
+  height: 75rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.calendar-wrap .date.week .one-day text {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 8rpx auto 0;
+}
+
+.calendar-wrap .date.week .one-day.active {
+  position: relative;
+}
+
+.calendar-wrap .date.week .one-day.active::after {
+  position: absolute;
+  content: ' ';
+	width: 8rpx;
+	height: 8rpx;
+	background-color: #4c89fb;
+	border-radius: 8rpx;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+.calendar-wrap .date.week .one-day.active text {
+	background-color: #4c89fb;
+	opacity: 0.6;
+	border-radius: 50rpx;
+  color: #fff;
+} */
+
+/* 一个月 */
+
+/* .calendar-wrap .date.month .one-day {
+  display: flex;
+  width: calc(100% / 7.1);
+  text-align: center;
+  flex-direction: column;
+  height: 127rpx;
+  font-size: 30rpx;
+  color: #333;
+  border-right: solid 1rpx #e8e8e8;
+  border-bottom: solid 1rpx #e8e8e8;
+}
+
+.calendar-wrap .date.month .one-day.active {
+	background-color: #4c89fb;
+	opacity: 0.8;
+  color: #fff;
+}
+
+.calendar-wrap .date.month .one-day.active .num {
+  color: #fff;
+}
+
+.calendar-wrap .date.month .one-day text {
+  flex: 1;
+  justify-content:center;
+  line-height: 1;
+  padding-top: 15rpx;
+}
+
+.calendar-wrap .date.month .one-day .od {
+}
+.calendar-wrap .date.month .one-day .num {
+  font-size: 26rpx;
+	color: #4c89fb;
+} */
+
+/* 显示一周/月 图标 */
+
+.ic-ud {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: -22rpx;
+  transform: translate(-50%, 0);
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.ic-ud.show {
+  display: block;
+}
+
+.ic-ud.up {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/schedule/ic_ud_u.png') no-repeat center center / 100% 100%;
+}
+
+.ic-ud.down {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/schedule/ic_ud_d.png') no-repeat center center / 100% 100%;
+}
+
+/* 过期/已完成 隐藏/显示操作 */
+
+.filter-area {
+  height: 80rpx;
+  background-color: #f0f2f5;
+}
+
+.filter-area .fa-layout {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.filter-area .fa-layout .fa-item {
+  flex: 1;
+}
+
+.filter-area .fa-layout .fa-item.lt {
+  text-align: left;
+  padding-left: 30rpx;
+}
+
+.filter-area .fa-layout .fa-item.lt text {
+  color: #fb4c4d;
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+.filter-area .fa-layout .fa-item.rt {
+  text-align: right;
+  padding-right: 30rpx;
+  padding-top: 20rpx;
+	font-family: PingFang-SC-Medium;
+	font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+
+.filter-area .fa-layout .fa-item.rt text {
+  display: inline-block;
+  color: #999;
+  font-size: 26rpx;
+  line-height: 80rpx;
+}
+/* checkbox{
+  width: 24rpx;
+  height: 24rpx;
+} */
+
+checkbox .wx-checkbox-input{
+   width: 24rpx; /* 背景的宽 */
+   height: 24rpx; /* 背景的高 */
+   margin-bottom: 7rpx
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   font-size:24rpx; /* 对勾大小 24  rpx */
+}

@@ -1,0 +1,371 @@
+
+@import "/pages/template/resume_op/resume_op.wxss";
+
+.container {
+  min-height: 100%;
+  background-color: #f0f2f5;
+  padding:0 0 20rpx 0;
+}
+
+/**顶部分享*/
+
+.top-share {
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  background: #fff url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_006.png') no-repeat 116rpx bottom;
+  background-size: 80rpx 44rpx;
+}
+
+.top-share .top-share-text {
+  display: block;
+  line-height: 80rpx;
+  text-indent: 206rpx;
+  font-size: 26rpx;
+  color: #f89f1e;
+}
+
+.top-share .top-share-btn {
+  display: block;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  margin-top: -30rpx;
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  background: #f89f1e url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_007.png') no-repeat 26rpx center;
+  background-size: 32rpx 32rpx;
+  font-size: 26rpx;
+  color: #fff;
+  text-indent: 24rpx;
+}
+
+/**
+* hr分享者配置的 公司信息
+*/
+
+.company-info {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  text-align: center;
+}
+
+.company-info image {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  vertical-align: middle;
+  background-color: #eee;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  border-bottom: solid 1rpx #d9d9d9;
+}
+
+.company-info text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: #333;
+}
+
+
+/*转发留言*/
+
+.share-message {
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+}
+
+/*转发留言 - 头像*/
+
+.share-message .auth-info image {
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
+  border-radius: 50%;
+}
+
+/*转发留言 - 简介*/
+
+.share-message .auth-info text {
+  display: inline-block;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #9aa0aa;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+
+/*转发留言 - 提示语*/
+
+.share-message .share-msg {
+  position: relative;
+  font-size: 26rpx;
+  color: #333;
+  background-color: #fff;
+  padding: 15rpx 40rpx;
+  border: 1rpx solid #4c89fb;
+  border-radius: 10rpx;
+  margin-top: 25rpx;
+}
+
+.share-message .share-msg::before {
+  position: absolute;
+  display: block;
+  top: -9rpx;
+  left: 30rpx;
+  width: 20rpx;
+  height: 10rpx;
+  content: '';
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_008.png') no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+/* 简历 */
+
+.resume-part {
+  width: 710rpx;
+  margin: 20rpx auto 20rpx;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+/*个人信息*/
+
+.re-p-info {
+  box-shadow: 0 0 18rpx rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.re-p-info .resume-overly {
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_005_1.png') no-repeat right bottom;
+  background-size: 100% 100%;
+  padding: 60rpx 40rpx 50rpx;
+  position: relative;
+}
+
+.re-p-info .name {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+._inline {
+  line-height: 1.1;
+  float: left;
+}
+
+._bl {
+  display: inline-block;
+  position: relative;
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+}
+
+._bl::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1rpx;
+  background-color: #cccccc;
+}
+
+.re-p-info .position-text {
+  font-size: 30rpx;
+  margin-right: 6rpx;
+  padding-top: 2rpx;
+}
+
+.re-p-info .position-inline {
+  padding-top: 2rpx;
+}
+
+.re-p-info .position {
+  height: 34rpx;
+  line-height: 34rpx;
+  font-size: 22rpx;
+  color: #f89800;
+  padding: 0 15rpx;
+  border-radius: 3rpx;
+  background-color: #ffefd6;
+  box-sizing: border-box;
+  max-width: 150rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.re-p-info .detail-info {
+  margin-top: 30rpx;
+}
+
+.re-p-info .detail-info ._inline {
+  line-height: 1;
+  font-size: 26rpx;
+  color: #9aa1aa;
+}
+
+.re-p-info .work-icon {
+  display: inline-block;
+  float: left;
+  width: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #f0f2f5;
+  color: #9aa1aa;
+  font-size: 26rpx;
+  text-align: center;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.re-p-info .work-position {
+  float: left;
+  display: inline-block;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 1;
+  margin-top: 15rpx;
+}
+
+.re-p-info .work-company text {
+  display: block;
+  max-width: 100%;
+  font-size: 30rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.re-p-info .work {
+  padding: 40rpx 0 30rpx;
+  border-bottom: solid 1rpx #e8e8e8;
+}
+
+.re-p-info .work .work-left {
+  float: left;
+}
+
+.re-p-info .work .work-company {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.re-p-info .status {
+  position: relative;
+  margin-top: 25rpx;
+  box-sizing: border-box;
+  min-height: 62rpx;
+}
+
+.re-p-info .zp-status {
+  float: left;
+  display: inline-block;
+  font-size: 26rpx;
+  max-width: 360rpx;
+  min-height: 60rpx;
+  line-height: 30rpx;
+  color: #999999;
+}
+
+.re-p-info .zp-status .text {
+  display: inline-block;
+  font-size: 26rpx;
+  max-width: 360rpx;
+  min-height: 60rpx;
+  line-height: 30rpx;
+  color: #999999;
+}
+
+/*flex垂直居中对齐*/
+.align-center-vertical{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.re-p-info .status .btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+  z-index: 1;
+  display: inline-block;
+  width: 210rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #4c89fb;
+  border-radius: 4rpx;
+  border: solid 1rpx #4c89fb;
+  text-align: center;
+}
+
+.re-p-info .status .btn.nosend {
+	background-color: #f0f2f5;
+	border-radius: 4px;
+	color: #cccccc;
+	border: solid 1rpx #cccccc;
+}
+
+.re-p-info .status .btn:active {
+  background-color: #f0f2f5;
+}
+
+.re-p-info .icon-ischeck {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28rpx;
+  height: 28rpx;
+  background: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_015.png') no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+.re-p-info.isread .name, 
+.re-p-info.isread .position-text,
+.re-p-info.isread .work-position, 
+.re-p-info.isread .work-company text, 
+.re-p-info.isread .zp-status text {
+  color: #999;
+}
+
+.re-p-info.isread .icon-ischeck {
+  background-image: url('https://static.hrloo.com/hrloo56/zpminiapp/img/resume_show/icon_016.png');
+}
+
+/* 姓 */
+
+.resume-part .surname {
+  position: absolute;
+  top: 45rpx;
+  right: 40rpx;
+  width: 99rpx;
+  height: 99rpx;
+  line-height: 99rpx;
+  text-align: center;
+  font-size: 36rpx;
+  border-radius: 50%;
+}
+
+.resume-part .surname.sex1 {
+  background-color: #e2eeff;
+  color: #4c89fb;
+  border: 1rpx solid #4c89fb;
+}
+
+.resume-part .surname.sex2 {
+  background-color: #f7e7ed;
+  color: #fb4c4d;
+  border: 1rpx solid #fb5455;
+}

@@ -1,0 +1,8 @@
+<!-- 简历分享 tab -->
+<view class="resume_nav">
+
+  <view class='nav-item {{navTabIndex == 1?"on":""}}' data-name="resume" catchtap='_navTabClick'>标准简历</view>
+  <view class='nav-item'  data-name="original" catchtap='_navTabClick'>原始简历</view>
+  <view class='nav-item {{navTabIndex == 2?"on":""}}'  data-name="record" catchtap='_navTabClick'>操作记录(<view class='nav-num'>{{resumeOperationRecord}}</view>)</view>
+  <button bindtap='_showToast'></button>
+</view>

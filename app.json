@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/schedule/init/init",
+    "pages/authorization/authorization",
+    "pages/extract/extract",
+    "pages/transfer/transfer",
+    "pages/resume_base/resume_base",
+    "pages/resume_list/resume_list",
+    "pages/resume_invalid/resume_invalid",
+    "pages/template/resume_op/resume_op",
+    "pages/test/test",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "三茅招聘",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#4c89fb",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/icon_index.png",
+        "selectedIconPath": "/images/iocn_index_active.png"
+      },
+      {
+        "pagePath": "pages/schedule/init/init",
+        "text": "日程",
+        "iconPath": "/images/icon_schedule.png",
+        "selectedIconPath": "/images/iocn_schedule_active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/icon_mine.png",
+        "selectedIconPath": "/images/icon_mine_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
